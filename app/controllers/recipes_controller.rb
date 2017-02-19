@@ -7,7 +7,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.find_by(id: params[:id])
     @labels = @recipe.labels
   end
 
@@ -26,11 +26,11 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.find_by(id: params[:id])
   end
 
   def update
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.find_by(id: params[:id])
     @recipe.assign_attributes(whitelisted_recipe_params)
 
     if @recipe.save
