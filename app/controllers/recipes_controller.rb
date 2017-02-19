@@ -2,7 +2,8 @@ class RecipesController < ApplicationController
   before_filter :authorize
 
   def index
-    @recipes = Recipe.all.paginate(page: params[:page], per_page: 2)
+    @q = Recipe.ransack(params[:q])
+    @recipes = @q.result(distinct: true).paginate(page: params[:page], per_page: 2) #if params[:q]
     @labels = Label.all
   end
 
