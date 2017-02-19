@@ -1,11 +1,26 @@
 <h1>All the recipes!</h1>
 
+<div class="search-area">
+
+	<%= search_form_for @q do |f| %>
+
+	  <%= f.label :title_cont %>
+	  <%= f.search_field :title_cont %>
+
+	  <%= f.label :body_cont %>
+	  <%= f.search_field :body_cont %>
+
+	  <%= f.submit %><br><br>
+	<% end %>
+</div>
+
 <% @recipes.each do |recipe| %>
   <b><%= link_to recipe.title, recipe_path(recipe) %></b><br>
   <%= recipe.body %><br><br>
 <% end %>
 
 <%= will_paginate @recipes %>
+
 
 <h3>Labels:</h3>
 <p>
