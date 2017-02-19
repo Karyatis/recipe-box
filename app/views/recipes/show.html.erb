@@ -1,0 +1,17 @@
+<b><%= @recipe.title %><br></b>
+<%= @recipe.body %><br>
+
+<p>
+  <%= link_to "Edit", edit_recipe_path(@recipe) %> |
+  <%= link_to "Delete", @recipe, :confirm => "Are you sure?", :method => :delete %>
+</p>
+
+<p>
+  Labels:
+  <% @labels.each do |label| %>
+  <ul>
+    <li><%= label.description %></li>
+  </ul>
+  <% end %>
+</p>
+

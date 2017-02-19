@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  root 'recipes#index'
+
+  resources :recipes, :labels
+
   # these routes are for showing users a login form, logging them in, and logging them out.
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'

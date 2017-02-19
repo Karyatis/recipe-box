@@ -9,6 +9,19 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>&nbsp;&nbsp;
+          <% if logged_in? %>
+            <li><a href="/recipes/new">Add a recipe</a></li>&nbsp;&nbsp;
+            <%= link_to "Logout", '/logout' %>
+          <% else %>
+            <li><%= link_to 'Login', '/login' %></li>
+          <% end %>
+      </ul>
+    </nav>
+    <div class="container">
+      <%= yield %>
+     </div>
   </body>
 </html>
