@@ -4,3 +4,15 @@
   <b><%= link_to recipe.title, recipe_path(recipe) %></b><br>
   <%= recipe.body %><br><br>
 <% end %>
+
+<%= will_paginate @recipes %>
+
+<h3>Labels:</h3>
+<p>
+  <% @labels.each do |label| %>
+  <ul>
+    <li><%= label.description %></li>
+  </ul>
+  <% end %>
+</p>
+
