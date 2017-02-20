@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
 
   def index
     @q = Recipe.ransack(params[:q])
-    @recipes = @q.result(distinct: true).paginate(page: params[:page], per_page: 2) #if params[:q]
+    @recipes = @q.result(distinct: true).paginate(page: params[:page], per_page: 5) 
     @labels = Label.all
   end
 
