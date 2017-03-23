@@ -35,7 +35,7 @@ class LabelsController < ApplicationController
   end
 
   def destroy
-    # very simple code to find the post we're referring to and
-    # destroy it.  Once that's done, redirect us to somewhere fun.
+    flash.now[:notice] = "Delete operation failed" unless Label.destroy(params[:id])
+    redirect_to :action => :index
   end
 end

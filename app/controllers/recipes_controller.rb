@@ -4,8 +4,6 @@ class RecipesController < ApplicationController
   def index
     @q = Recipe.ransack(params[:q])
     @recipes = @q.result(distinct: true).paginate(page: params[:page], per_page: 5)
-    @search = Label.ransack(params[:search]) 
-    @labels = @search.result(distinct: true)
   end
 
   def show
@@ -20,9 +18,9 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(whitelisted_recipe_params)
     if @recipe.save
-      flash[:recipe] = @recipe.id
       redirect_to @recipe
     else
+      flash.now[:error] = "Recipe not created"
       render :new
     end
   end
@@ -48,6 +46,6 @@ class RecipesController < ApplicationController
   end
 
   def whitelisted_recipe_params
-    params.require(:recipe).permit(:title, :body)
+    params.require(:recipe).permit(:title, :body, :label_list)
   end
 end
