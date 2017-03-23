@@ -10,6 +10,9 @@
 	  <%= f.label :body_cont %>
 	  <%= f.search_field :body_cont %>
 
+	  <%= f.label :title_or_body_cont %>
+	  <%= f.search_field :title_or_body_cont %>
+
 	  <%= f.submit %><br><br>
 	<% end %>
 </div>
@@ -20,14 +23,3 @@
 <% end %>
 
 <%= will_paginate @recipes %>
-
-
-<h3>Labels:</h3>
-<p>
-  <% @labels.each do |label| %>
-  <ul>
-    <li><%= label.description %></li>
-  </ul>
-  <% end %>
-</p>
-

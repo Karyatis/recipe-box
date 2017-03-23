@@ -1,0 +1,9 @@
+<h2>All Labels</h2>
+
+<ul id="labels">
+  <% @labels.each do |label| %>
+    <li>
+      <%= link_to label.description, label_path(label) %>
+    </li>
+  <% end %>
+</ul>
