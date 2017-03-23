@@ -2,13 +2,11 @@ class LabelsController < ApplicationController
   before_filter :authorize
 
   def index
-    # very simple code to grab all posts so they can be
-    # displayed in the Index view (index.html.erb)
+    @labels = Label.all
   end
 
   def show
-    # very simple code to grab the proper Post so it can be
-    # displayed in the Show view (show.html.erb)
+    @label = Label.find(params[:id])
   end
 
   def new

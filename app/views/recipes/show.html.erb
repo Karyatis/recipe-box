@@ -2,16 +2,18 @@
 <%= @recipe.body %><br>
 
 <p>
+  Labels:
+  <% @recipe.labels.each do |label| %>
+  <ul>
+    <li><%= link_to label.description, label_path(label) %></li>
+  </ul>
+  <% end %>
+</p>
+
+<p>
   <%= link_to "Edit", edit_recipe_path(@recipe) %> |
   <%= link_to "Delete", @recipe, :confirm => "Are you sure?", :method => :delete %>
 </p>
 
-<p>
-  Labels:
-  <% @labels.each do |label| %>
-  <ul>
-    <li><%= label.description %></li>
-  </ul>
-  <% end %>
-</p>
+
 

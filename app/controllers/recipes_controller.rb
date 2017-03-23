@@ -3,8 +3,9 @@ class RecipesController < ApplicationController
 
   def index
     @q = Recipe.ransack(params[:q])
-    @recipes = @q.result(distinct: true).paginate(page: params[:page], per_page: 5) 
-    @labels = Label.all
+    @recipes = @q.result(distinct: true).paginate(page: params[:page], per_page: 5)
+    @search = Label.ransack(params[:search]) 
+    @labels = @search.result(distinct: true)
   end
 
   def show
