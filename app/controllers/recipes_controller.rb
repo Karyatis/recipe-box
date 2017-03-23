@@ -20,9 +20,9 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(whitelisted_recipe_params)
     if @recipe.save
-      flash[:recipe] = @recipe.id
       redirect_to @recipe
     else
+      flash.now[:error] = "Recipe not created"
       render :new
     end
   end
@@ -48,6 +48,6 @@ class RecipesController < ApplicationController
   end
 
   def whitelisted_recipe_params
-    params.require(:recipe).permit(:title, :body)
+    params.require(:recipe).permit(:title, :body, :label_list)
   end
 end
